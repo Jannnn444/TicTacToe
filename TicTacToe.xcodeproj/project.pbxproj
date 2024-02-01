@@ -14,6 +14,7 @@
 		54B8781B2B63E964003F1E98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54B8781A2B63E964003F1E98 /* Assets.xcassets */; };
 		54B8781E2B63E964003F1E98 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54B8781D2B63E964003F1E98 /* Preview Assets.xcassets */; };
 		54B878252B63F501003F1E98 /* GameResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B878242B63F501003F1E98 /* GameResultView.swift */; };
+		54C396FE2B6BCE7B00051A5C /* PlayerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C396FD2B6BCE7B00051A5C /* PlayerState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		54B8781A2B63E964003F1E98 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		54B8781D2B63E964003F1E98 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		54B878242B63F501003F1E98 /* GameResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResultView.swift; sourceTree = "<group>"; };
+		54C396FD2B6BCE7B00051A5C /* PlayerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +54,7 @@
 			children = (
 				545B5BF92B6A6A750057FF65 /* GameBoardDataModel.swift */,
 				545B5BFB2B6A6C8E0057FF65 /* BlockState.swift */,
+				54C396FD2B6BCE7B00051A5C /* PlayerState.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -166,6 +169,7 @@
 				545B5BFA2B6A6A750057FF65 /* GameBoardDataModel.swift in Sources */,
 				54B878192B63E962003F1E98 /* ContentView.swift in Sources */,
 				54B878252B63F501003F1E98 /* GameResultView.swift in Sources */,
+				54C396FE2B6BCE7B00051A5C /* PlayerState.swift in Sources */,
 				54B878172B63E962003F1E98 /* TicTacToeApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

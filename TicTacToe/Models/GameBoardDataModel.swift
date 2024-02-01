@@ -14,16 +14,27 @@ class GameBoardDataModel: ObservableObject {
     
     //@Pubished for models, State for views
     
-   @Published var board: [BlockState] = []
+   @Published var board: [BlockState] = []  // []
+    @Published var turn = PlayerState.circle
+    
     
     
     // MARK: Beginging
     init() {
+        newGame()
+      
+    }
+    
+    //MARK: New Game SetUp
+    func newGame()  {
         
-        // creating the initial board
+        // creating the initial board , loop thru 9 times
         for _ in 0..<9 {
-            
             board.append(.empty)
         }
     }
+    
+    
+    //calculate
+    //calCoins
 }
