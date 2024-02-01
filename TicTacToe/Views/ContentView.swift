@@ -8,7 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    
+    
     @State var showModel = false   // set my state
+    @StateObject var gameBoardDM = GameBoardDataModel()
+    
+    init() {
+        print(gameBoardDM.board)
+    }
     
     var body: some View {
         
@@ -23,20 +31,9 @@ struct ContentView: View {
                 Spacer()
                 
                 // MARK: Game Board
-                Text("Game Board")
-                
-                Button {
-                    
-                    //action
-                    showModel = true
-                    
-                } label: {
-                    Text("Click Meow")
-                        .frame(width:170, height: 50)
-                        .cornerRadius(12)
-                        .background(.pink)
-                        .padding(20)
-                        
+                ForEach(gameBoardDM.board, id: \.self) { block in
+                    Color(.systemPink)
+                        .frame(width: 80, height: 80)
                 }
                 
                 Spacer()
