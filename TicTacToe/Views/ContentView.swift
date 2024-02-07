@@ -38,8 +38,10 @@ struct ContentView: View {
                 ForEach(0..<3, id: \.self) { rowIndex in
                     GridRow {
                         
-                        ForEach(0..<3, id: \.self) { columnIndex in
+                        ForEach(0..<3, id: \.self) { columnIndex in   //print every 9 
                             
+                            // Block Background
+                            // we var the grid as variable
                             
                             ZStack{
                                 
@@ -53,7 +55,8 @@ struct ContentView: View {
                                 // grid row 0, 1, 2 *3
                                 // col row 0, 1, 2  (from left to right)
                                 
-                                
+                                // check the correspomding index equals cross to a certain
+                                // BlockState
                                 if (gameBoardDM.board[rowIndex*3 + columnIndex] == BlockState.circle)
                                     
                                 {  Image(systemName: "circle")
@@ -64,7 +67,7 @@ struct ContentView: View {
                                 
                                 else if (gameBoardDM.board[rowIndex*3 + columnIndex] == BlockState.cross)
                                     
-                                {  Image(systemName: "cross")
+                                {  Image(systemName: "xmark")   //createImage here
                                         .resizable()
                                         .foregroundColor(.white)
                                         .frame(width: gridBlockSize - 5, height: gridBlockSize - 5)
@@ -72,10 +75,25 @@ struct ContentView: View {
                             }
                             .onTapGesture {
                                 
-                                //update this block with this turn's state
-                                gameBoardDM.board[rowIndex*3 + columnIndex] = BlockState.circle
+                                //change the turn
+                                //put the logic function we need inside gmbdDM
                                 
-                                print("circle")
+                                gameBoardDM.makeMove(forIndex: rowIndex*3 + columnIndex)
+                                
+                                
+                                
+                                
+//                                if (gameBoardDM.turn == .circle) {
+//                                    
+//                                    gameBoardDM.board[rowIndex*3 + columnIndex] = .circle
+//                                    
+//                                } else if (gameBoardDM.turn == .cross) {
+//                                    
+//                                    gameBoardDM.board[rowIndex*3 + columnIndex] = .cross
+//                                    
+//                                }
+                                
+                             
                             }
                             
                         }
@@ -96,3 +114,4 @@ struct ContentView: View {
     #Preview {
         ContentView()
     }
+
