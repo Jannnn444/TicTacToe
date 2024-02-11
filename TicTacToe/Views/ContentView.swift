@@ -34,17 +34,19 @@ struct ContentView: View {
             
             Grid(horizontalSpacing: blockSpacing, verticalSpacing: blockSpacing) {
                 
-                
+                //loop down
                 ForEach(0..<3, id: \.self) { rowIndex in
                     GridRow {
-                        
+                        //loop right
                         ForEach(0..<3, id: \.self) { columnIndex in   //print every 9 
                             
                             // Block Background
                             // we var the grid as variable
                             
+                            
+                            
                             ZStack{
-                                
+                              
                                 Color(.systemPink)
                                     .frame(width: gridBlockSize, height: gridBlockSize)
                                 
@@ -57,7 +59,9 @@ struct ContentView: View {
                                 
                                 // check the correspomding index equals cross to a certain
                                 // BlockState
+                                
                                 if (gameBoardDM.board[rowIndex*3 + columnIndex] == BlockState.circle)
+                                    
                                     
                                 {  Image(systemName: "circle")
                                         .resizable()
@@ -73,13 +77,14 @@ struct ContentView: View {
                                         .frame(width: gridBlockSize - 5, height: gridBlockSize - 5)
                                 }
                             }
+                            //runs on clicking this block
                             .onTapGesture {
                                 
+                                //detector
                                 //change the turn
                                 //put the logic function we need inside gmbdDM
                                 
                                 gameBoardDM.makeMove(forIndex: rowIndex*3 + columnIndex)
-                                
                                 
                                 
                                 

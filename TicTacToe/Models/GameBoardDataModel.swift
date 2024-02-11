@@ -17,7 +17,7 @@ class GameBoardDataModel: ObservableObject {
     //@Pubished for models, State for views
     
     @Published var board: [BlockState] = []  // []                   ->a state u clicked somewhere
-    @Published var turn = PlayerState.cross
+    @Published var turn: PlayerState? // = PlayerState.cross
 
     
     
@@ -26,6 +26,7 @@ class GameBoardDataModel: ObservableObject {
         newGame()
     }
     
+    
     //MARK: New Game SetUp
     func newGame()  {
         
@@ -33,7 +34,16 @@ class GameBoardDataModel: ObservableObject {
         for _ in 0..<9 {
             board.append(.empty)
         }
-       
+        
+        
+        // let the user start the game with the random circle or cross
+        
+        let coinFlip = Bool.random()
+        if coinFlip {
+            turn = .circle
+        } else {
+            turn = .cross
+        }
     }
     
     //MARK: - Make a move on a player's turn
@@ -50,9 +60,10 @@ class GameBoardDataModel: ObservableObject {
         if (turn == .circle) {
             //draw the circle
             board[forIndex] = .circle 
+            
+            //board[2] = .circle
             //after we draw the circle,change the turn
             turn = .cross
-            
             
         } else if (turn == .cross) {
             
