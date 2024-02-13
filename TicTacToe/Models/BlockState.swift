@@ -10,3 +10,23 @@ enum BlockState {
     case cross
     case empty
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
