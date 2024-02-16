@@ -32,15 +32,22 @@ struct ContentView: View {
         ZStack{
             VStack{
                 
+                Spacer()
+                
                 // MARK: Game Tietle
                 Text("Tic-Tac-Toe")
-                    .font(.system(size: 28, weight:  .medium))
-                    .padding(.bottom, 22)
+                    .font(.system(size: 34, weight:  .bold))
+                    .fontDesign(.monospaced)
+//                    .padding(.bottom, 70)
                 Spacer()
                 if gameBoardDM.turn == .circle {
                     Text("Player O")
+                        .font(.system(size: 28, weight: .medium))
+                        .fontDesign(.monospaced)
                 } else {
                     Text("Player X")
+                        .font(.system(size: 28, weight: .medium))
+                        .fontDesign(.monospaced)
                 }
                 // MARK: Game Board
                 
@@ -75,7 +82,7 @@ struct ContentView: View {
                                         
                                     {  Image(systemName: "circle")
                                             .resizable()
-                                            .foregroundColor(.white)
+                                            .foregroundColor(.blue)
                                             .frame(width: gridBlockSize - 5, height: gridBlockSize - 5)
                                     }
                                     
@@ -83,7 +90,7 @@ struct ContentView: View {
                                                 
                                     {  Image(systemName: "xmark")   //createImage here
                                             .resizable()
-                                            .foregroundColor(.white)
+                                            .foregroundColor(.green)
                                             .frame(width: gridBlockSize - 5, height: gridBlockSize - 5)
                                     }
                                 }
@@ -113,14 +120,18 @@ struct ContentView: View {
                     }
                 }
                 Spacer()
+                Spacer()
             }
             
-            // MARK: Show Game Result Modal
+            // MARK: Show Game Result Module
             if gameBoardDM.winner == .circle {
                 GameResultView()
+            } else if gameBoardDM.winner == .cross {
+                GameResultViewCross()
             }
         }
     }
+    
 }
     #Preview {
         ContentView().environmentObject(GameBoardDataModel())

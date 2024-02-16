@@ -101,14 +101,42 @@ class GameBoardDataModel: ObservableObject {
          */
         
         // check if circle is the winner
-        
-        
-        // MARK : Homework
-        
-        if (board[0] == .circle && board[1] == .circle && board[2] == .circle) {
+        // MARK: Winner Circle Situation
+               if (board[0] == .circle && board[1] == .circle && board[2] == .circle) {
             winner = .circle
+        } else if (board[3] == .circle && board[4] == .circle && board[5] == .circle) {
+            winner = .circle
+        } else if (board[6] == .circle && board[7] == .circle && board[8] == .circle) {
+            winner = .circle
+        } else if (board[0] == .circle && board[3] == .circle && board[6] == .circle) {
+            winner = .circle
+        } else if (board[1] == .circle && board[4] == .circle && board[7] == .circle) {
+            winner = .circle
+        } else if (board[2] == .circle && board[5] == .circle && board[8] == .circle) {
+            winner = .circle
+        } else if (board[0] == .circle && board[4] == .circle && board[8] == .circle) {
+            winner = .circle
+        } else if (board[2] == .circle && board[4] == .circle && board[6] == .circle) {
+            winner = .circle
+            
+        // MARK: Winner Cross Situation
+        } else if (board[0] == .cross && board[1] == .cross && board[2] == .cross) {
+            winner = .cross
+        } else if (board[3] == .cross && board[4] == .cross && board[5] == .cross) {
+            winner = .cross
+        } else if (board[6] == .cross && board[7] == .cross && board[8] == .cross) {
+            winner = .cross
+        } else if (board[0] == .cross && board[3] == .cross && board[6] == .cross) {
+            winner = .cross
+        } else if (board[1] == .cross && board[4] == .cross && board[7] == .cross) {
+            winner = .cross
+        } else if (board[2] == .cross && board[5] == .cross && board[8] == .cross) {
+            winner = .cross
+        } else if (board[0] == .cross && board[4] == .cross && board[8] == .cross) {
+            winner = .cross
+        } else if (board[2] == .cross && board[4] == .cross && board[6] == .cross) {
+            winner = .cross
         }
-        // check if cross is the winner
     }
 
     //calculate
