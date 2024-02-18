@@ -6,39 +6,34 @@
 //
 import SwiftUI
 struct ContentView: View {
+    
+    // Define a state variable to control the visibility of a modal view
     @State var showModel = false   // set my state
+    
+    // Access the shared data model through the environment
     @EnvironmentObject var gameBoardDM: GameBoardDataModel
-    var gridBlockSize: CGFloat = 60
-    var blockSpacing: CGFloat = 4
-    //source
-//    var firendList = [
-//        Friend(name: "22"),
-//        Friend(name: "23"),
-//        Friend(name: "47")
-//    ]
-//    var title = "example"
-    // friendsList[1] = Friend(name: "30"),
-    // title = "33"
-    // Here for changing the UI, data u need to change at the source
-//    var body: some View {
-//        ForEach(firendList) { friend in
-//            HStack {
-//                Image(systemName: "person")
-//                Text("friend.name")
-//            }
-//        }
-//    }
+    
+    // Define constants for the size of grid blocks and the spacing between blocks
+    var gridBlockSize: CGFloat = 80
+    var blockSpacing: CGFloat = 5
+   
     var body: some View {
+        
+        // Your UI layout goes here
+        // This view may contain various SwiftUI components such as VStack, HStack, Text, etc.
+        // The @State variable `showModel` can be used to conditionally present a modal view
+        
         ZStack{
             VStack{
                 
                 Spacer()
                 
-                // MARK: Game Tietle
+                // MARK: Game Title
                 Text("Tic-Tac-Toe")
                     .font(.system(size: 34, weight:  .bold))
                     .fontDesign(.monospaced)
-//                    .padding(.bottom, 70)
+                    .padding(.top, 70)
+                
                 Spacer()
                 if gameBoardDM.turn == .circle {
                     Text("Player O")
@@ -58,7 +53,6 @@ struct ContentView: View {
                         GridRow {
                             //loop right
                             ForEach(0..<3, id: \.self) { columnIndex in   //print every 9
-                                
                                 // Block Background
                                 // we var the grid as variable
                           
@@ -66,8 +60,7 @@ struct ContentView: View {
                                     
                                     Color(.systemPink)
                                         .frame(width: gridBlockSize, height: gridBlockSize)
-                                    
-                                    
+  
                                     //gameBoardDM.board - [BlockState.empty...]
                                     //gameBoard.title = "Circle"
                                     //[BlockState.empty, BlockState.empty, 3, 4, 5]
@@ -90,7 +83,7 @@ struct ContentView: View {
                                                 
                                     {  Image(systemName: "xmark")   //createImage here
                                             .resizable()
-                                            .foregroundColor(.green)
+                                            .foregroundColor(.yellow)
                                             .frame(width: gridBlockSize - 5, height: gridBlockSize - 5)
                                     }
                                 }
@@ -102,20 +95,8 @@ struct ContentView: View {
                                     //put the logic function we need inside gmbdDM
                                     
                                     gameBoardDM.makeMove(forIndex: rowIndex*3 + columnIndex)
-    
-                                    //                                if (gameBoardDM.turn == .circle) {
-                                    //
-                                    //                                    gameBoardDM.board[rowIndex*3 + columnIndex] = .circle
-                                    //
-                                    //                                } else if (gameBoardDM.turn == .cross) {
-                                    //
-                                    //                                    gameBoardDM.board[rowIndex*3 + columnIndex] = .cross
-                                    //
-                                    //                                }
                                 }
-                                
                             }
-                            
                         }
                     }
                 }
@@ -123,11 +104,13 @@ struct ContentView: View {
                 Spacer()
             }
             
-            // MARK: Show Game Result Module
+            // MARK: Show Game Result Module on ZStack
             if gameBoardDM.winner == .circle {
                 GameResultView()
             } else if gameBoardDM.winner == .cross {
                 GameResultViewCross()
+            } else if gameBoardDM.winner == PlayerState.noOne  {
+                GameResultViewNoOneWon()
             }
         }
     }

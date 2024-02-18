@@ -11,15 +11,18 @@ class GameBoardDataModel: ObservableObject {
     
     // [ 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
     // where 0 - empty
-    //@Pubished for models, @State for views
+    //@Pubished for dataModels, @State for views
     
-    @Published var board: [BlockState] = []  // []                   ->a state u clicked somewhere
+    @Published var board: [BlockState] = [] // []                    ->a state u clicked somewhere
     @Published var turn: PlayerState? // = PlayerState.cross
     @Published var winner: PlayerState? // nil
+    
     
     // MARK: Beginging
     init() {
         newGame()
+        
+        
     }
     
     //MARK: New Game SetUp
@@ -73,8 +76,10 @@ class GameBoardDataModel: ObservableObject {
             turn = .circle
         
         }
-        checkWinner()
         // check for winner
+        checkWinner()
+        // check for draw
+        checkDraw()
         
         // [ 0, 0, 0,
         //   0, 0, 0,
@@ -137,8 +142,38 @@ class GameBoardDataModel: ObservableObject {
         } else if (board[2] == .cross && board[4] == .cross && board[6] == .cross) {
             winner = .cross
         }
+        
+        // MARK: Winner No One Situation
+        
     }
-
+    
+    
+    func checkDraw() {
+        // Loop to find if theres no more empties
+        // stores draw state
+        
+        var draw = true  // check if current state is draw 
+        //already draw
+    
+        // flip logic
+        // [ .cross, .cross, .cross, .cross, .cross, .cross, .cross, .cross, .cross ]
+        for boardItem in board {
+            if (boardItem == .empty) {      // if it's empty wiill draw false
+                draw = false
+            }
+        }
+        
+        // if they all not empty, go the draw = true
+        if (draw) {
+            winner = .noOne
+        }
+        // We can use .contains instead, it's shorter
+       
+    }
+    
+    
+    
+    
     //calculate
     //calCoins
 }
