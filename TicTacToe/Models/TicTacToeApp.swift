@@ -15,7 +15,7 @@ struct TicTacToeApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView().environmentObject(gameBoardDM)
+            HomeView().environmentObject(gameBoardDM)
             
         }
     }
