@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct GameView: View {
     
     
@@ -23,12 +22,21 @@ struct GameView: View {
    
     var body: some View {
         
+        // MARK: Show Player's Name
+        
+        HStack {
+            Spacer()
+            Text("\(gameBoardDM.username) your turn" )
+            Spacer()
+            Spacer()
+        }
+        
         HStack {
             // MARK: Player's Turn
             Spacer()
             
             if gameBoardDM.turn == .circle {
-                Text("Player O")
+                Text("Player O" )
                     .font(.system(size: 28, weight: .medium))
                     .fontDesign(.monospaced)
             } else {
@@ -119,16 +127,13 @@ struct GameView: View {
     }
     
 }
-    #Preview {
-        HomeView().environmentObject(GameBoardDataModel())
-    }
+ 
 
 
-
-
-
-
-
+#Preview {
+    
+    HomeView().environmentObject(GameBoardDataModel())
+}
 
 
 

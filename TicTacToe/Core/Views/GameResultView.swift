@@ -5,12 +5,13 @@
 //  Created by yucian huang on 2024/1/26.
 //
 
-
 import SwiftUI
 
 //@State var title: String = "My Title" 
+
 struct GameResultView: View {
     @EnvironmentObject var gameBoardDM: GameBoardDataModel
+    
     let myModuleDimension: CGFloat = 250
     var body: some View {
         ZStack{
@@ -25,7 +26,6 @@ struct GameResultView: View {
                 Text("Retry ?")
                     .padding(.top)
                     .onTapGesture {
-                        // RESET GAME
                         gameBoardDM.newGame()
                     }
             }
@@ -100,6 +100,6 @@ struct GameResultViewNoOneWon: View {
 }
 
 #Preview {
-    GameResultView()
+    GameResultView().environmentObject(GameBoardDataModel())
 }
 

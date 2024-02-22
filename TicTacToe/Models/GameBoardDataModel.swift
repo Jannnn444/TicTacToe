@@ -17,14 +17,13 @@ class GameBoardDataModel: ObservableObject {
     @Published var turn: PlayerState? // = PlayerState.cross
     @Published var winner: PlayerState? // nil
     
+    @Published var gameMode: GameModes?
     @Published var avatar: Avatars?
-    
+    @Published var username: String = ""
     
     // MARK: Beginging
     init() {
         newGame()
-        
-        
     }
     
     //MARK: New Game SetUp
@@ -192,7 +191,6 @@ class GameBoardDataModel: ObservableObject {
         // We can use .contains instead, it's shorter
        
     }
-    
     
     
     

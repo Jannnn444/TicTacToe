@@ -14,6 +14,7 @@ struct TicTacToeApp: App {
     @StateObject var gameBoardDM = GameBoardDataModel()
     
     var body: some Scene {
+        
         WindowGroup {
             HomeView().environmentObject(gameBoardDM)
             

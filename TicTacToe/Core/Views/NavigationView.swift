@@ -10,21 +10,23 @@ import SwiftUI
 struct NavigationView: View {
     
     // pass it down from another state  // state control 
-    @Binding var navigation: NavState
+    @Binding var navigationState: NavState
+    
     
     var body: some View {
         HStack {
             
             Button {
-                navigation = .home
+                navigationState = .home
             } label: {
                 Image(systemName: "house.fill")
                 Text("Home")
                     .font(.system(size: 20, weight: .medium))
+                
             }
             
             Button {
-                navigation = .game
+                navigationState = .game
             } label: {
                 Image(systemName: "trophy.fill")
                 Text("Game")
@@ -32,8 +34,7 @@ struct NavigationView: View {
             }
             
             Button {
-                
-                navigation = .leaderboard
+                navigationState = .leaderboard
             } label: {
                 Image(systemName: "gamecontroller.fill")
                 Text("Leaderboard")
