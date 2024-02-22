@@ -49,7 +49,8 @@ struct GameResultViewCross: View {
             VStack{
                 HStack{
                     Text("Cross won!")
-                    Image(systemName: "trophy.fill")}
+                    Image(systemName: "trophy.fill")
+                }
                 Text("Retry ?")
                     .padding(.top)
                     .onTapGesture {
@@ -76,11 +77,10 @@ struct GameResultViewNoOneWon: View {
             //MARK: Module
             VStack {
                 HStack{
-                    Text("NO ONE WON!!")
-                        .fontDesign(.monospaced)
-                    Image(systemName: "rainbow")
+                    Text("Even!")
+                    Image(systemName: "trophy.fill")
                 }
-                Text("Let's Retry ?")
+                Text(" Retry? ")
                     
                     .font(.system(size: 30, weight: .bold))
                     .padding(.top)

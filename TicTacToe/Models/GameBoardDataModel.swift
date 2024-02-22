@@ -17,6 +17,8 @@ class GameBoardDataModel: ObservableObject {
     @Published var turn: PlayerState? // = PlayerState.cross
     @Published var winner: PlayerState? // nil
     
+    @Published var avatar: Avatars?
+    
     
     // MARK: Beginging
     init() {
@@ -31,12 +33,13 @@ class GameBoardDataModel: ObservableObject {
         // clear the board, reset the winner
         board = []
         winner = nil
+        avatar = nil
         
         // creating the initial board , loop thru 9 times
         for _ in 0..<9 {
             board.append(.empty)
         }
-
+        
         // let the user start the game with the random circle or cross
         
         // decides a random player to start the game
@@ -47,6 +50,9 @@ class GameBoardDataModel: ObservableObject {
         } else {
             turn = .cross
         }
+        
+        checkAvatars()
+        
     }
     
     // MARK: - Make move logic
@@ -69,13 +75,18 @@ class GameBoardDataModel: ObservableObject {
             //board[2] = .circle
             //after we draw the circle,change the turn
             turn = .cross
+            checkAvatars()
+           
             
         } else if (turn == .cross) {
             
             board[forIndex] = .cross
             turn = .circle
+            checkAvatars()
         
         }
+        
+       
         // check for winner
         checkWinner()
         // check for draw
@@ -85,6 +96,17 @@ class GameBoardDataModel: ObservableObject {
         //   0, 0, 0,
         //   0, 0, 0 ]
                 
+    }
+    
+    
+    func checkAvatars() {
+        if (avatar == .cat) {
+            avatar = .dog
+        } else if (avatar == .dog) {
+            avatar = .cat
+        } else {
+            avatar = .cat
+        }
     }
     
     func checkWinner() {
