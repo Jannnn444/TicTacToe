@@ -24,7 +24,7 @@ struct HomeView: View {
     @State private var showAlert = false
     
     @State var selection: String = "Easy"
-    let filterOptions: [String] = ["Easy", "Difficult", "Random"]
+    let filterOptions: [String] = ["Easy Cake", "Difficult Boss", "Random Tea", "Practice Mode"]
     
     //["2 Player", "AI robot", "Annonymous"]
     
@@ -157,10 +157,12 @@ struct HomeView: View {
                             } else if !gameBoardDM.username.isEmpty  {
                                 
                                 Text("hi \(gameBoardDM.username) ")
-                                Text(joinGameMessage)
+                                Text("Join TicTacToe World Cup")
+                                    .fontDesign(.monospaced)
                                 
                                     .onTapGesture {
                                         showAlert = true
+                                        
                                     }
                                     .alert(isPresented: $showAlert) {
                                         Alert(

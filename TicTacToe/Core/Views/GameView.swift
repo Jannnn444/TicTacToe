@@ -12,9 +12,11 @@ struct GameView: View {
     
     // Define a state variable to control the visibility of a modal view
     @State var showModel = false   // set my state
-    
+    @State var showText = false
+ 
     // Access the shared data model through the environment
     @EnvironmentObject var gameBoardDM: GameBoardDataModel
+
     
     // Define constants for the size of grid blocks and the spacing between blocks
     var gridBlockSize: CGFloat = 80
@@ -26,7 +28,16 @@ struct GameView: View {
         
         HStack {
             Spacer()
-            Text("\(gameBoardDM.username) your turn" )
+            Text("\(gameBoardDM.username) your turn")
+                .onTapGesture {
+                    gameBoardDM.username = ""
+                }
+        
+            if gameBoardDM.username == "" {
+                Text("\(gameBoardDM.username) your turn")
+            } 
+            
+            
             Spacer()
             Spacer()
         }
@@ -109,7 +120,10 @@ struct GameView: View {
                                     .frame(width: gridBlockSize - 5, height: gridBlockSize - 5)
                             }
                         }
+                        // the view is showing the result
+                        // gameboard.index will check if it's x/o, and check turn,make move update the array, array update gameboarddm, and them pass back the UI.
                         //runs on clicking this block
+                        
                         .onTapGesture {
                             
                             //detector

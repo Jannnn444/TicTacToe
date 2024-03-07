@@ -70,6 +70,7 @@ class GameBoardDataModel: ObservableObject {
         if (turn == .circle) {
             //draw the circle
             board[forIndex] = .circle 
+           // one .circle, 8.empty [1,0,0,0,0,0,0,0,0]
             
             //board[2] = .circle
             //after we draw the circle,change the turn
