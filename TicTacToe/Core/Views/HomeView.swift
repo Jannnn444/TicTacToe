@@ -116,11 +116,13 @@ struct HomeView: View {
                                     .frame(width: 100, height: 100)
                                     .clipShape(Circle())
                                     .shadow(radius: 5)
-                                    .scaleEffect(selected ? 1.3 : 0.9)
-                                    .scaleEffect(selected ? 0.9 : 1.3)
+                                    .scaleEffect(selected ? 1.2 : 0.9)
+//                                    .scaleEffect(selected ? 0.9 : 1.3)
                                     .onTapGesture {
                                         withAnimation {
-                                            selected.toggle()
+                                            
+                                            selected = true
+                                            selected2 = false
                                             gameBoardDM.avatar = .cat
                                             selectionGame = true
                                         }
@@ -132,11 +134,12 @@ struct HomeView: View {
                                     .frame(width: 100, height: 100)
                                     .clipShape(Circle())
                                     .shadow(radius: 5)
-                                    .scaleEffect(selected2 ? 1.3 : 0.9)
-                                    .scaleEffect(selected2 ? 0.9 : 1.3)
+                                    .scaleEffect(selected2 ? 1.2 : 0.9)
+//                                    .scaleEffect(selected2 ? 0.9 : 1.3)
                                     .onTapGesture {
                                         withAnimation {
-                                            selected2.toggle()
+                                            selected2 = true
+                                            selected = false
                                             gameBoardDM.avatar = .dog
                                             selectionGame = true
                                         }
