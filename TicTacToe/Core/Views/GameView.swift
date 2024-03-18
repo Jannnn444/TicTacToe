@@ -25,58 +25,51 @@ struct GameView: View {
     var body: some View {
         
         // MARK: Show Player's Name
-        
-        HStack {
-            Spacer()
-            Text("\(gameBoardDM.username) your turn")
-                .onTapGesture {
-                    gameBoardDM.username = ""
+        VStack{
+            HStack() {
+                Spacer()
+                Text("Welcome \(gameBoardDM.username)")
+                Spacer()
+                Spacer()
+                Spacer()
+            }
+            
+            
+            HStack {
+                // MARK: Player's Turn
+                Spacer()
+                
+                if gameBoardDM.turn == .circle {
+                    Text("Player O" )
+                        .font(.system(size: 28, weight: .medium))
+                        .fontDesign(.monospaced)
+                } else {
+                    Text("Player X")
+                        .font(.system(size: 28, weight: .medium))
+                        .fontDesign(.monospaced)
                 }
-        
-            if gameBoardDM.username == "" {
-                Text("\(gameBoardDM.username) your turn")
-            } 
-            
-            
-            Spacer()
-            Spacer()
-        }
-        
-        HStack {
-            // MARK: Player's Turn
-            Spacer()
-            
-            if gameBoardDM.turn == .circle {
-                Text("Player O" )
-                    .font(.system(size: 28, weight: .medium))
-                    .fontDesign(.monospaced)
-            } else {
-                Text("Player X")
-                    .font(.system(size: 28, weight: .medium))
-                    .fontDesign(.monospaced)
+                
+                Spacer()
+                
+                if gameBoardDM.avatar == .cat {
+                    Image("cat")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 50, height: 50)
+                        .clipShape(Circle())
+                    
+                    
+                } else if gameBoardDM.avatar == .dog {
+                    Image("dog")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 50, height: 50)
+                        .clipShape(Circle())
+                    
+                }
+                Spacer()
             }
-            
-            Spacer()
-            
-            if gameBoardDM.avatar == .cat {
-                Image("cat")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 50, height: 50)
-                    .clipShape(Circle())
-                
-                
-            } else if gameBoardDM.avatar == .dog {
-                Image("dog")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 50, height: 50)
-                    .clipShape(Circle())
-                
-            }
-            Spacer()
         }
-        
         // MARK: Game Board
         
         Grid(horizontalSpacing: blockSpacing, verticalSpacing: blockSpacing) {

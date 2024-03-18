@@ -5,6 +5,7 @@
 //  Created by yucian huang on 2024/1/31.
 //
 import SwiftUI
+import SwiftData
 
 class GameBoardDataModel: ObservableObject {
     // array to represent the grid blocks on aa tictactoe gtid

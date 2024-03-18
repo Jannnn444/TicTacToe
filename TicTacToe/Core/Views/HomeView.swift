@@ -5,10 +5,13 @@
 //  Created by yucian huang on 2024/2/18.
 
 import SwiftUI
+import SwiftData
 
 
 struct HomeView: View {
     
+    @Environment(\.modelContext) private var modelContext
+
     // UI layout goes here
     // This view may contain various SwiftUI components such as VStack, HStack, Text, etc.
     
@@ -182,9 +185,10 @@ struct HomeView: View {
                     GameView()
                     
                 case .leaderboard:
-                    Text("this is leaderboard")
+//                    Text("this is leaderboard")
                     
-                    
+              
+
                     // MARK: Leaderboard Sharing Scores
                     Button {
                         selectionGame.toggle()
@@ -206,6 +210,7 @@ struct HomeView: View {
                     Spacer()
                 
                 
+                    // outside the switch
                     // MARK: Navigation Menu
                     NavigationView(navigationState: $navigation)
                     .colorMultiply(.black)
@@ -219,6 +224,7 @@ struct HomeView: View {
                 // The data modal variable.winner `winner` can be used to conditionally present a modal view
                 if gameBoardDM.winner == .circle {
                     GameResultView()
+                    
                 } else if gameBoardDM.winner == .cross {
                     GameResultViewCross()
                 } else if gameBoardDM.winner == PlayerState.noOne  {

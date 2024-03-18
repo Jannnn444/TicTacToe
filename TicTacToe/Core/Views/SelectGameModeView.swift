@@ -13,6 +13,7 @@ struct SelectGameModeView: View {
     @EnvironmentObject var gameBoardDM: GameBoardDataModel
 
     @State var selection: String = "2 Players"
+    
     let filterOptions: [String] = [
         "2 Player", "AI robot", "Annonymous"
 
