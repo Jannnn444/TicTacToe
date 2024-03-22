@@ -15,8 +15,8 @@ struct HomeView: View {
     // UI layout goes here
     // This view may contain various SwiftUI components such as VStack, HStack, Text, etc.
     
-    @State private var selected: Bool = false
-    @State private var selected2: Bool = false
+    @State private var selectedCat: Bool = false
+    @State private var selectedDog: Bool = false
     @State private var selectionGame = false
     
     @State var navigation: NavState = .home
@@ -39,22 +39,22 @@ struct HomeView: View {
         ZStack{
             VStack{
                 
-                Spacer()
                 
                 // MARK: Game Greetings
                 
                 Text("Welcome")
-                    .font(.system(size: 28, weight:  .bold))
-                    .fontDesign(.monospaced)
-                    .padding(.top, 70)
-                
-                Text("Tic-Tac-Toe")
-                    .font(.system(size: 34, weight:  .bold))
+                    .font(.system(size: 25, weight: .regular))
                     .fontDesign(.monospaced)
                     .padding(.top, 10)
                 
+                Text("Tic-Tac-Toe")
+                    .font(.system(size: 34, weight: .bold))
+                    .fontDesign(.monospaced)
+                    .padding(.top, 5)
+                    .padding(.bottom, 60)
                 
-               
+                
+                Spacer()
                 Spacer()
                 Spacer()
                 Spacer()
@@ -66,45 +66,25 @@ struct HomeView: View {
                 case .home:
                     
                     VStack{
-                        ZStack {
-                            
-                            if selectionGame {
-                                //MARK: Choose Game Level
-                                
-                                Picker(
-                                    selection: $selectionGame,
-                                    label:
-                                        Text(selection)
-                                    ,content: {
-                                        ForEach(filterOptions, id: \.self) { option in
-                                            Text(option)
-                                                .tag(option)
-                                        }
-                                    }
-                                    
-                                )
-                                
-                                .pickerStyle(WheelPickerStyle())
-                                //                            .animation( .easeOut )
-                                .menuActionDismissBehavior(.automatic)
-                                .onTapGesture {
-                                    selectionGame = false
-                                    joinGameMessage = "Press for Join!"
-                                }
-                            }
-                            
-                        }
+                     
                         
                         // MARK: Select Avatars
                         VStack {
                             
-                            Text("Select Game Mode")
-                                .font(.system(size: 28, weight:  .bold))
+                            Text("1.Type Your Name")
+                                .font(.system(size: 25, weight:  .regular))
                                 .fontDesign(.monospaced)
                             
+                            // MARK: Nmae TextField
+                            TextField(" Enter name here", text: $gameBoardDM.username)
+                                .textFieldStyle(.roundedBorder)
+                                .font(.headline)
+                                .padding(.bottom, 10)
+                                .frame(width: 200, height: 100, alignment: .center)
                             
-                            Text("Select Your Avatar")
-                                .font(.system(size: 28, weight:  .bold))
+                            // MARK: Avatar Settings
+                            Text("2.Select Your Avatar")
+                                .font(.system(size: 25, weight:  .regular))
                                 .fontDesign(.monospaced)
                             
                             
@@ -116,13 +96,13 @@ struct HomeView: View {
                                     .frame(width: 100, height: 100)
                                     .clipShape(Circle())
                                     .shadow(radius: 5)
-                                    .scaleEffect(selected ? 1.2 : 0.9)
+                                    .scaleEffect(selectedCat ? 1.2 : 0.9)
 //                                    .scaleEffect(selected ? 0.9 : 1.3)
                                     .onTapGesture {
                                         withAnimation {
                                             
-                                            selected = true
-                                            selected2 = false
+                                            selectedCat = true
+                                            selectedDog = false
                                             gameBoardDM.avatar = .cat
                                             selectionGame = true
                                         }
@@ -134,12 +114,12 @@ struct HomeView: View {
                                     .frame(width: 100, height: 100)
                                     .clipShape(Circle())
                                     .shadow(radius: 5)
-                                    .scaleEffect(selected2 ? 1.2 : 0.9)
+                                    .scaleEffect(selectedDog ? 1.2 : 0.9)
 //                                    .scaleEffect(selected2 ? 0.9 : 1.3)
                                     .onTapGesture {
                                         withAnimation {
-                                            selected2 = true
-                                            selected = false
+                                            selectedDog = true
+                                            selectedCat = false
                                             gameBoardDM.avatar = .dog
                                             selectionGame = true
                                         }
@@ -148,13 +128,40 @@ struct HomeView: View {
                                 
                             }
                             
-                            // MARK: Loading/Join Game Button + NameUpdate
+                            // MARK: SelectGame
+                            Text("3.Select Game Mode")
+                                .font(.system(size: 25, weight:  .regular))
+                                .fontDesign(.monospaced)
+                                .padding(.top, 20)
                             
-                            TextField(" Enter your name", text: $gameBoardDM.username)
-                                .textFieldStyle(.roundedBorder)
-                                .font(.headline)
-                                .padding(.horizontal)
-                                .frame(width: 200, height: 100, alignment: .center)
+                            
+                            
+                            ZStack {
+                                Spacer()
+                                if selectionGame {
+                                    //MARK: Choose Game Level
+                                    Picker(
+                                        selection: $selectionGame,
+                                        label:
+                                            Text(selection)
+                                        ,content: {
+                                            ForEach(filterOptions, id: \.self) { option in
+                                                Text(option)
+                                                    .tag(option)
+                                            }
+                                        })
+                                    .pickerStyle(WheelPickerStyle())
+                                  // .animation( .easeOut )
+                                    .menuActionDismissBehavior(.automatic)
+                                    .onTapGesture {
+                                        selectionGame = false
+                                        joinGameMessage = "Press for Join!"
+                                        navigation = .game
+                                    }
+                                }
+                            }
+                            
+                            // MARK: Loading/Join Game Button
                             
                             if gameBoardDM.username == "" {
                                 Text("Loading...")

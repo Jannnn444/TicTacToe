@@ -8,7 +8,7 @@ import SwiftUI
 import SwiftData
 
 class GameBoardDataModel: ObservableObject {
-    // array to represent the grid blocks on aa tictactoe gtid
+    // array to represent the grid blocks on aa tictactoe grid
     
     // [ 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
     // where 0 - empty
@@ -175,19 +175,19 @@ class GameBoardDataModel: ObservableObject {
         // Loop to find if theres no more empties
         // stores draw state
         
-        var draw = true  // check if current state is draw 
+        var drawed = true  // check if current state is draw 
         //already draw
     
         // flip logic
         // [ .cross, .cross, .cross, .cross, .cross, .cross, .cross, .cross, .cross ]
         for boardItem in board {
             if (boardItem == .empty) {      // if it's empty wiill draw false
-                draw = false
+                drawed = false
             }
         }
         
         // if they all not empty, go the draw = true
-        if (draw) {
+        if (drawed) {
             winner = .noOne
         }
         // We can use .contains instead, it's shorter
