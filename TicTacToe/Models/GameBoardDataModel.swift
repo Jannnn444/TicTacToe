@@ -179,7 +179,7 @@ class GameBoardDataModel: ObservableObject {
         }
         
         // if they all not empty, go the draw = true
-        if (drawed) {
+        if (drawed) && winner != .circle && winner != .cross {
             winner = .noOne
         }
         // We can use .contains instead, it's shorter
