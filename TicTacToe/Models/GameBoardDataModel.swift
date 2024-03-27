@@ -21,7 +21,7 @@ class GameBoardDataModel: ObservableObject {
     @Published var gameMode: GameModes?
     @Published var avatar: Avatars?
     @Published var username: String = ""
-    
+
     // MARK: Beginging
     init() {
         newGame()
@@ -63,34 +63,26 @@ class GameBoardDataModel: ObservableObject {
         // check if board index is occupied
         
         if board[forIndex] != .empty {  
-        // we stop the function
+        // we stop the function no changable
             return
         }
         
         //on circle's turn
         if (turn == .circle) {
-            //draw the circle
-            board[forIndex] = .circle 
-           // one .circle, 8.empty [1,0,0,0,0,0,0,0,0]
-            
-            //board[2] = .circle
-            //after we draw the circle,change the turn
+           
+            board[forIndex] = .circle // draw circle, one .circle, 8.empty [1,0,0,0,0,0,0,0,0]
+
             turn = .cross
             checkAvatars()
-           
-            
+
         } else if (turn == .cross) {
             
             board[forIndex] = .cross
             turn = .circle
             checkAvatars()
-        
         }
         
-       
-        // check for winner
         checkWinner()
-        // check for draw
         checkDraw()
         
         // [ 0, 0, 0,

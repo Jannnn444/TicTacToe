@@ -11,9 +11,9 @@ import SwiftData
 struct HomeView: View {
     
     @Environment(\.modelContext) private var modelContext
-
+    
     // UI layout goes here
-    // This view may contain various SwiftUI components such as VStack, HStack, Text, etc.
+    // This view contains various SwiftUI components such as VStack, HStack, Text, etc.
     
     @State private var selectedCat: Bool = false
     @State private var selectedDog: Bool = false
@@ -21,7 +21,7 @@ struct HomeView: View {
     
     @State var navigation: NavState = .home
     
-//  @State var username = ""  -> use the username from dataModel instead
+    //  @State var username = ""  -> use the username from dataModel instead
     
     @State var joinGameMessage = "Set your game settings."
     @State private var showAlert = false
@@ -39,8 +39,7 @@ struct HomeView: View {
         ZStack{
             VStack{
                 
-                
-                // MARK: Game Greetings
+                // MARK: Greetings
                 
                 Text("Welcome")
                     .font(.system(size: 25, weight: .regular))
@@ -51,38 +50,30 @@ struct HomeView: View {
                     .font(.system(size: 34, weight: .bold))
                     .fontDesign(.monospaced)
                     .padding(.top, 5)
-                    .padding(.bottom, 60)
-                
+                    .padding(.bottom, 70)
                 
                 Spacer()
-                Spacer()
-                Spacer()
-                Spacer()
                 
-                
-                // MARK: Game Board
+                // MARK: Page Navigation
                 switch navigation {
                     
                 case .home:
-                    
-                    VStack{
-                     
-                        
-                        // MARK: Select Avatars
+    
                         VStack {
+                            
+                            // MARK: Name TextField
                             
                             Text("1.Type Your Name")
                                 .font(.system(size: 25, weight:  .regular))
                                 .fontDesign(.monospaced)
-                            
-                            // MARK: Nmae TextField
+ 
                             TextField(" Enter name here", text: $gameBoardDM.username)
                                 .textFieldStyle(.roundedBorder)
                                 .font(.headline)
                                 .padding(.bottom, 10)
                                 .frame(width: 200, height: 100, alignment: .center)
                             
-                            // MARK: Avatar Settings
+                            // MARK: Avatar
                             Text("2.Select Your Avatar")
                                 .font(.system(size: 25, weight:  .regular))
                                 .fontDesign(.monospaced)
@@ -97,10 +88,9 @@ struct HomeView: View {
                                     .clipShape(Circle())
                                     .shadow(radius: 5)
                                     .scaleEffect(selectedCat ? 1.2 : 0.9)
-//                                    .scaleEffect(selected ? 0.9 : 1.3)
+                                //                                    .scaleEffect(selected ? 0.9 : 1.3)
                                     .onTapGesture {
                                         withAnimation {
-                                            
                                             selectedCat = true
                                             selectedDog = false
                                             gameBoardDM.avatar = .cat
@@ -115,7 +105,7 @@ struct HomeView: View {
                                     .clipShape(Circle())
                                     .shadow(radius: 5)
                                     .scaleEffect(selectedDog ? 1.2 : 0.9)
-//                                    .scaleEffect(selected2 ? 0.9 : 1.3)
+                                //                                    .scaleEffect(selected2 ? 0.9 : 1.3)
                                     .onTapGesture {
                                         withAnimation {
                                             selectedDog = true
@@ -128,18 +118,18 @@ struct HomeView: View {
                                 
                             }
                             
-                            // MARK: SelectGame
+                            // MARK: Game Mode
+                            // when tap on avatar, the selectGame mode = true, pop the picker
                             Text("3.Select Game Mode")
                                 .font(.system(size: 25, weight:  .regular))
                                 .fontDesign(.monospaced)
                                 .padding(.top, 20)
                             
-                            
-                            
                             ZStack {
                                 Spacer()
+                                
+                                //MARK: Picker- Game Level
                                 if selectionGame {
-                                    //MARK: Choose Game Level
                                     Picker(
                                         selection: $selectionGame,
                                         label:
@@ -151,17 +141,16 @@ struct HomeView: View {
                                             }
                                         })
                                     .pickerStyle(WheelPickerStyle())
-                                  // .animation( .easeOut )
+                                    // .animation( .easeOut )
                                     .menuActionDismissBehavior(.automatic)
                                     .onTapGesture {
-                                        selectionGame = false
                                         joinGameMessage = "Press for Join!"
                                         navigation = .game
                                     }
                                 }
                             }
                             
-                            // MARK: Loading/Join Game Button
+                            // MARK: Loading Message
                             
                             if gameBoardDM.username == "" {
                                 Text("Loading...")
@@ -172,34 +161,31 @@ struct HomeView: View {
                                 Text("hi \(gameBoardDM.username) ")
                                 Text("Join TicTacToe World Cup")
                                     .fontDesign(.monospaced)
-                                
                                     .onTapGesture {
                                         showAlert = true
                                         
                                     }
+                                
+                                
                                     .alert(isPresented: $showAlert) {
                                         Alert(
                                             title: Text("Current Settings Not Available"),
                                             message: Text("Your current Settings can’t be " +
                                                           "determined at this time." + " \(gameBoardDM.username) please make sure you selected your Avatar before join game.")
-                            
+                                            
                                         )
                                     }
                             }
                             
                         }
-                       
-                        
-                    }
+
                 case .game:
                     GameView()
                     
                 case .leaderboard:
-//                    Text("this is leaderboard")
+                    LeaderboardView()
                     
-              
-
-                    // MARK: Leaderboard Sharing Scores
+                    // MARK: Leaderboard
                     Button {
                         selectionGame.toggle()
                     } label: {
@@ -208,53 +194,44 @@ struct HomeView: View {
                             .padding(5)
                             .font(.headline)
                         
+                            .onTapGesture {
+                                navigation = .home
+                                gameBoardDM.username = ""
+                                selectedCat = false
+                                selectedDog = false
+                                selectionGame = false
+                            }
                     }
                     .buttonStyle(.borderedProminent)
                     .frame(width: 100, height: 30, alignment: .center)
                     .cornerRadius(20)
                     .tint(.yellow)
-                    
                 }
-                
-                
-                    Spacer()
-                
-                
-                    // outside the switch
-                    // MARK: Navigation Menu
-                    NavigationView(navigationState: $navigation)
+
+                Spacer()
+
+                // MARK: Navigation Menu
+                NavigationView(navigationState: $navigation)
                     .colorMultiply(.black)
                     .fontDesign(.rounded)
-                    //$ this means this state been read & changable
-                }
+                //$ this means this state been read & changable
+            }
+ 
+            // MARK: Show Game Result Module on ZStack
+            
+            if gameBoardDM.winner == .circle {
+                GameResultView()
                 
+            } else if gameBoardDM.winner == .cross {
+                GameResultViewCross()
                 
-                
-                // MARK: Show Game Result Module on ZStack
-                // The data modal variable.winner `winner` can be used to conditionally present a modal view
-                if gameBoardDM.winner == .circle {
-                    GameResultView()
-                    
-                } else if gameBoardDM.winner == .cross {
-                    GameResultViewCross()
-                } else if gameBoardDM.winner == PlayerState.noOne  {
-                    GameResultViewNoOneWon()
-                }
-                
-                
-                
-                // mark: show SelectGameMode Module on ZStack
-                //            if selectionGame {
-                //                SelectGameModeView()
-                //            }
-                
-                
-                
+            } else if gameBoardDM.winner == .noOne  {
+                GameResultViewNoOneWon()
             }
         }
-        
     }
-
+    
+}
 
 
 

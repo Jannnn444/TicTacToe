@@ -54,7 +54,6 @@ struct GameResultViewCross: View {
                 Text("Retry ?")
                     .padding(.top)
                     .onTapGesture {
-                        // RESET GAME
                         gameBoardDM.newGame()
                     }
             }

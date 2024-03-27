@@ -29,9 +29,7 @@ struct GameView: View {
             HStack() {
                 Spacer()
                 Text("Welcome \(gameBoardDM.username)")
-                Spacer()
-                Spacer()
-                Spacer()
+                    .padding(.trailing, 250)
             }
             
             

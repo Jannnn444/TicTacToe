@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5403D4632BB4982700D7DA3D /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5403D4622BB4982700D7DA3D /* LeaderboardView.swift */; };
 		545B5BFA2B6A6A750057FF65 /* GameBoardDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545B5BF92B6A6A750057FF65 /* GameBoardDataModel.swift */; };
 		545B5BFC2B6A6C8E0057FF65 /* BlockState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545B5BFB2B6A6C8E0057FF65 /* BlockState.swift */; };
 		54B878172B63E962003F1E98 /* TicTacToeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54B878162B63E962003F1E98 /* TicTacToeApp.swift */; };
@@ -21,15 +22,10 @@
 		54EB729E2B8260D300E7E214 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EB729D2B8260D300E7E214 /* GameView.swift */; };
 		54EB72A02B8266C400E7E214 /* NavState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EB729F2B8266C400E7E214 /* NavState.swift */; };
 		54EB72A22B826BEC00E7E214 /* NavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EB72A12B826BEC00E7E214 /* NavigationView.swift */; };
-		54EFAB6D2BA331D500BB3C22 /* LeaderEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EFAB6C2BA331D500BB3C22 /* LeaderEntry.swift */; };
-		54EFAB712BA3331100BB3C22 /* LeaderEntryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EFAB702BA3331100BB3C22 /* LeaderEntryListView.swift */; };
-		54EFAB732BA3356A00BB3C22 /* LeaderEntryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EFAB722BA3356A00BB3C22 /* LeaderEntryDetailView.swift */; };
-		54EFAB752BA335A500BB3C22 /* LeaderEntryRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EFAB742BA335A500BB3C22 /* LeaderEntryRowView.swift */; };
-		54EFAB772BA335BD00BB3C22 /* CreateLeaderEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EFAB762BA335BD00BB3C22 /* CreateLeaderEntryView.swift */; };
-		54EFAB792BA33C0500BB3C22 /* EditJournalEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EFAB782BA33C0400BB3C22 /* EditJournalEntryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5403D4622BB4982700D7DA3D /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
 		545B5BF92B6A6A750057FF65 /* GameBoardDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoardDataModel.swift; sourceTree = "<group>"; };
 		545B5BFB2B6A6C8E0057FF65 /* BlockState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockState.swift; sourceTree = "<group>"; };
 		54B878132B63E962003F1E98 /* TicTacToe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TicTacToe.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,12 +41,6 @@
 		54EB729D2B8260D300E7E214 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		54EB729F2B8266C400E7E214 /* NavState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavState.swift; sourceTree = "<group>"; };
 		54EB72A12B826BEC00E7E214 /* NavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationView.swift; sourceTree = "<group>"; };
-		54EFAB6C2BA331D500BB3C22 /* LeaderEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderEntry.swift; sourceTree = "<group>"; };
-		54EFAB702BA3331100BB3C22 /* LeaderEntryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderEntryListView.swift; sourceTree = "<group>"; };
-		54EFAB722BA3356A00BB3C22 /* LeaderEntryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderEntryDetailView.swift; sourceTree = "<group>"; };
-		54EFAB742BA335A500BB3C22 /* LeaderEntryRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderEntryRowView.swift; sourceTree = "<group>"; };
-		54EFAB762BA335BD00BB3C22 /* CreateLeaderEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLeaderEntryView.swift; sourceTree = "<group>"; };
-		54EFAB782BA33C0400BB3C22 /* EditJournalEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditJournalEntryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +62,7 @@
 				54EB72A12B826BEC00E7E214 /* NavigationView.swift */,
 				54B878242B63F501003F1E98 /* GameResultView.swift */,
 				54E2CF572B877C8E0094436F /* SelectGameModeView.swift */,
+				5403D4622BB4982700D7DA3D /* LeaderboardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -128,39 +119,9 @@
 		54EB72962B825E9200E7E214 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				54EB729A2B825F2400E7E214 /* LeaderBoard */,
 				545B5BF72B6A698D0057FF65 /* Views */,
 			);
 			path = Core;
-			sourceTree = "<group>";
-		};
-		54EB729A2B825F2400E7E214 /* LeaderBoard */ = {
-			isa = PBXGroup;
-			children = (
-				54EB729B2B825F2D00E7E214 /* Models */,
-				54EB729C2B825F3400E7E214 /* Views */,
-			);
-			path = LeaderBoard;
-			sourceTree = "<group>";
-		};
-		54EB729B2B825F2D00E7E214 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				54EFAB6C2BA331D500BB3C22 /* LeaderEntry.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		54EB729C2B825F3400E7E214 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				54EFAB702BA3331100BB3C22 /* LeaderEntryListView.swift */,
-				54EFAB722BA3356A00BB3C22 /* LeaderEntryDetailView.swift */,
-				54EFAB742BA335A500BB3C22 /* LeaderEntryRowView.swift */,
-				54EFAB762BA335BD00BB3C22 /* CreateLeaderEntryView.swift */,
-				54EFAB782BA33C0400BB3C22 /* EditJournalEntryView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,22 +196,17 @@
 			files = (
 				54E2CF562B8755F50094436F /* Avatars.swift in Sources */,
 				545B5BFC2B6A6C8E0057FF65 /* BlockState.swift in Sources */,
-				54EFAB772BA335BD00BB3C22 /* CreateLeaderEntryView.swift in Sources */,
 				54EB72A22B826BEC00E7E214 /* NavigationView.swift in Sources */,
-				54EFAB6D2BA331D500BB3C22 /* LeaderEntry.swift in Sources */,
 				54EB72982B825F0000E7E214 /* HomeView.swift in Sources */,
-				54EFAB752BA335A500BB3C22 /* LeaderEntryRowView.swift in Sources */,
-				54EFAB712BA3331100BB3C22 /* LeaderEntryListView.swift in Sources */,
 				545B5BFA2B6A6A750057FF65 /* GameBoardDataModel.swift in Sources */,
-				54EFAB792BA33C0500BB3C22 /* EditJournalEntryView.swift in Sources */,
 				54E2CF5C2B8781620094436F /* GameModes.swift in Sources */,
 				54B878252B63F501003F1E98 /* GameResultView.swift in Sources */,
 				54C396FE2B6BCE7B00051A5C /* PlayerState.swift in Sources */,
 				54E2CF582B877C8E0094436F /* SelectGameModeView.swift in Sources */,
 				54EB729E2B8260D300E7E214 /* GameView.swift in Sources */,
 				54B878172B63E962003F1E98 /* TicTacToeApp.swift in Sources */,
-				54EFAB732BA3356A00BB3C22 /* LeaderEntryDetailView.swift in Sources */,
 				54EB72A02B8266C400E7E214 /* NavState.swift in Sources */,
+				5403D4632BB4982700D7DA3D /* LeaderboardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
